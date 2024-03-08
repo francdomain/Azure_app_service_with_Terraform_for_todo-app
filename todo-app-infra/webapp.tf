@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "main" {
-  name                = "app-plan"
+  name                = var.service_plan_name
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   os_type             = "Linux"
@@ -12,7 +12,7 @@ resource "azurerm_service_plan" "main" {
 
 # Create the web app, pass in the App Service Plan ID
 resource "azurerm_linux_web_app" "main" {
-  name                = "todo-app001"
+  name                = var.webapp_name
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_service_plan.main.location
   service_plan_id     = azurerm_service_plan.main.id
