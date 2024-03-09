@@ -18,3 +18,7 @@ variable "scm_token" {
   description = "The Token type"
 }
 
+variable "db_detail" {
+  description = ""
+  type = map(string)
+}
