@@ -22,13 +22,14 @@ resource "azurerm_mssql_database" "main" {
   ]
 }
 
-# resource "azurerm_mssql_firewall_rule" "allowClient" {
-#   name             = "AllowClientIP"
-#   server_id        = azurerm_mssql_server.main.id
-#   start_ip_address = "105.113.30.135"
-#   end_ip_address   = "105.113.30.135"
+resource "azurerm_mssql_firewall_rule" "allowClient" {
+  name             = var.firewall_rule.name
+  server_id        = azurerm_mssql_server.main.id
+  start_ip_address = var.firewall_rule.start_ip
+  end_ip_address   = var.firewall_rule.end_ip
 
-#   depends_on = [
-#     azurerm_mssql_server.main
-#   ]
-# }
+  depends_on = [
+    azurerm_mssql_server.main
+  ]
+}
+

@@ -22,3 +22,8 @@ variable "db_detail" {
   description = ""
   type = map(string)
 }
+
+variable "firewall_rule" {
+  description = ""
+  type = map(string)
+}
